@@ -1,0 +1,92 @@
+<p id="notice"><%= notice %></p>
+
+<h2 class="biggermargin">
+	SHOWING ORDER DETAILS
+</h2>
+
+<p>
+  <strong>Order number:</strong>
+  <%= @order.id %>
+</p>
+
+<p>
+  <strong>Order rest:</strong>
+  <%= @restaurants.where(id: @order.order_rest).first.rest_name %>
+</p>
+
+<p>
+  <strong>Order organizer:</strong>
+  <%= @users.where(id: @order.order_organizer).first.user_name %>
+</p>
+
+<p>
+  <strong>Order type:</strong>
+<% if @order.order_type? %>
+  Delivery
+<% else %>
+  Pickup
+<% end %>
+</p>
+
+<p>
+  <strong>Order cost:</strong>
+  $<%= @order.order_cost %>
+</p>
+
+<p>
+  <strong>Order time at:</strong>
+  <%= @order.order_time_at %>
+</p>
+
+  <strong>Order placing in:</strong> <span id="countdown"></span>
+
+  <span class="hiddeninfo"></span>  
+  
+<script>
+
+$(document).ready(function() {
+	setInterval(showTime, 1000);
+
+	function showTime() {
+		orderTime = "<%= @order.order_time_at.to_i %>";
+		timeLeft = orderTime - parseInt($.now()/1000);
+		$(".hiddeninfo").text(timeLeft);
+		if (timeLeft > 0) {
+			days = parseInt(timeLeft / 86400);
+			hours = parseInt((timeLeft % 86400) / 3600);
+			mins = parseInt((timeLeft % 3600) / 60);
+			secs = parseInt(timeLeft % 60);
+			$("#countdown").text(days + " days, " + hours + " hours, " + mins + " minutes, " + secs + " seconds");
+		}
+		if (timeLeft <= 0)
+		{
+			$("#countdown").text("ORDER UP!");
+		}
+	}
+
+});
+
+</script>
+
+<p>
+  <strong>Order status:</strong>
+  <%= @order.order_status.capitalize %>
+</p>
+
+<p>
+  <strong>Order participants:</strong><br />
+  <% @participants.where(part_order: @order.id).each do |part| %>
+  	<p>
+  	<%= link_to @users.where(id: part.part_user).first.user_name, @users.where(id: + part.part_user).first, :class => "locallink" %><br />
+	<% @lineitems.where(line_part: part.id).each do |line| %>
+	  <!-- Updated: line item passes participant and order when editing -->
+	  <%= link_to line.line_name, edit_lineitem_path(line, :lineordernum => @order.id, :linepartnum => part.id), :class => "locallink" %><br />
+	  <!-- /Updated -->
+	<% end %>
+	<%= link_to 'Add an item', new_lineitem_path(:lineordernum => @order.id, :linepartnum => part.id), :class => "locallink" %>
+	</p>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

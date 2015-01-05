@@ -1,0 +1,36 @@
+<h3 id="notice"><%= notice %></h3>
+
+<h2 class="biggermargin">
+	SHOWING USER DETAILS
+</h2>
+
+<p>
+  <strong>User name:</strong>
+  <%= @user.user_name %>
+</p>
+
+<p>
+  <strong>User e-mail:</strong>
+  <%= @user.user_email %>
+</p>
+
+<p>
+  <strong>User role:</strong>
+  <%= @user.user_role %>
+</p>
+
+<p>
+  <strong>User friends:</strong>
+  <% if !(@friends.empty?) %>
+	<% @friends.each do |friend| %>
+	  <% @users.each do |namer| %>
+		<% if namer.id == friend.friend_recipient && friend.friend_creator == @user.id %>
+		  <br /><%= link_to namer.user_name, namer, :class => "locallink" %>
+		<% end %>
+	  <% end %>
+    <% end %>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  order_rest: 1
+  order_organizer: 1
+  order_type: false
+  order_cost: 19.99
+  order_time_at: 2013-11-03 10:53:54
+  order_status: pending
+
+two:
+  order_rest: 1
+  order_organizer: 2
+  order_type: true
+  order_cost: 12.99
+  order_time_at: 2013-11-03 10:53:54
+  order_status: placed

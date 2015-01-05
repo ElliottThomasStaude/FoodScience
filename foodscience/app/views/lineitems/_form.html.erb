@@ -1,0 +1,41 @@
+<%= form_for(@lineitem) do |f| %>
+  <% if @lineitem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lineitem.errors.count, "error") %> prohibited this lineitem from being saved:</h2>
+
+      <ul>
+      <% @lineitem.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Participant name:" %><br />
+    <!-- Updated: display user's name -->
+    <%= @users.where(id: @participants.where(id: params[:linepartnum]).first.part_user).first.user_name %>
+    <!-- /Updated -->    
+    <%= f.hidden_field :line_part, :value => params[:linepartnum] %>
+  </div>
+  <div class="field">
+    <%= f.label "Number of line item's order:" %><br />
+    <%= params[:lineordernum] %>
+    <%= f.hidden_field :line_order, :value => params[:lineordernum] %>
+  </div>
+  <div class="field">
+    <%= f.label "Line item name:" %><br />
+    <%= f.text_field :line_name %>
+  </div>
+  <div class="field">
+    <%= f.label "Line item price:" %><br />
+    <%= f.text_field :line_price %>
+  </div>
+  <div class="field">
+    <%= f.label "Notes:" %><br />
+    <%= f.text_area :line_notes %>
+  </div>
+  <div class="actions">
+    <%= f.submit(:line_part => params[:linepartnum], :line_order => params[:lineordernum]) %>
+  </div>
+<% end %>

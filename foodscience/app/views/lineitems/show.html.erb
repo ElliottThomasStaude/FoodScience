@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h2 class="biggermargin">
+	SHOWING LINEITEM DETAILS
+</h2>
+
+<p>
+  <strong>Line part:</strong>
+  <%= @lineitem.line_part %>
+</p>
+
+<p>
+  <strong>Line order:</strong>
+  <%= @lineitem.line_order %>
+</p>
+
+<p>
+  <strong>Line name:</strong>
+  <%= @lineitem.line_name %>
+</p>
+
+<p>
+  <strong>Line price:</strong>
+  <%= @lineitem.line_price %>
+</p>
+
+<p>
+  <strong>Line notes:</strong>
+  <%= @lineitem.line_notes %>
+</p>
+
+<%= link_to 'Edit', edit_lineitem_path(@lineitem) %> |
+<%= link_to 'Back', lineitems_path %>

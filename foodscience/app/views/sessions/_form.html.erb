@@ -1,0 +1,23 @@
+<%= form_tag @session %>
+
+<div class="fieldsdiv">
+	<fieldset>
+	<legend>Login information</legend>
+	<form>
+		<div class="field">
+			<%= label_tag(:login_name, "Username:") %><br />
+			<%= text_field_tag(:login_name) %>
+		</div>
+		<hr />
+		<div class="field">
+			<%= label(:login_password, "Password:") %><br />
+			<%= password_field_tag(:login_password) %>
+		</div>
+		</form>
+		
+	<div class="actions">
+		<%= submit_tag("Submit") %>
+	</div>
+	<%= link_to 'New? Sign up here!', new_user_path %>
+</fieldset>
+</div>

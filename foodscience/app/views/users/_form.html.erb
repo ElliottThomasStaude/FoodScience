@@ -1,0 +1,64 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<h1>
+	*Fields marked with red are required
+</h1>
+
+<div class="fieldsdiv">
+	<fieldset>
+	<legend>User information</legend>
+	<form>
+		<div class="reqdivrstnt">
+		<div class="field">
+			<%= f.label "Username:" %><br />
+			<%= f.text_field :user_name %>
+		</div>
+		<hr />
+		<div class="field">
+			<%= f.label "Email:" %><br />
+			<%= f.text_field :user_email %>
+		</div>
+		<hr />
+		<div class="field">
+			<%= f.label "Password:" %><br />
+			<%= f.password_field :password %>
+		</div>
+		<hr />
+		<div class="field">
+			<%= f.label "Confirm password:" %><br />
+			<%= f.password_field :password_confirmation %>
+		</div>
+		<hr />
+		<div class="field">
+			<%= f.label "Role:" %><br />
+			<%= f.text_field :user_role %>
+
+		</div>
+		<hr />
+		User's peers: <br />
+		<% @users.each do |userindex| %>
+        	<% if !(@user.id? && @user.id == userindex.id) %>
+        		<div class="field">
+					<%= check_box_tag 'friend_recipients[]', userindex.id.to_s %><%= userindex.user_name %>
+				</div>
+			<% end %>
+		<% end %>
+		</div>
+	</form>                
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+</fieldset>
+</div>
+<% end %>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Food+Science</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+	<script>
+	
+	function slideopen() {
+		$(this).animate({width: "456px"}, 300).find(".menubar").animate({width: "456px"}, 300);
+	};
+	
+	function slideclosed() {
+		$(this).animate({width: "32px"}, 300).find(".menubar").animate({width: "32px"}, 300);
+	};
+	
+	$(document).ready( function() {
+	
+		$("#container").on("mouseenter", slideopen);
+	
+		$("#container").on("mouseleave", slideclosed);
+	
+		$("#content").find("td, li").css({fontSize: "0.01em"});
+		$("#content").css({width: "20%"});
+		$("#content").animate({width: ["100%", "swing"]}, 1000);
+		$("#content").find("td, li").animate({fontSize: "1em"}, 1000);
+		
+	});
+	
+	</script>
+	
+	<div id="container">
+		<div class="menubar">
+			<div><%= link_to 'HOME', homes_path, :class => "locallink" %></div>
+			<div><% if session[:login_name] == nil %><%= link_to 'SIGN IN', 'login', :class => "locallink" %></div>
+			<% else %><%= link_to 'SIGN OUT', 'logout', :class => "locallink" %></div>
+			<div><a class="locallink" href="#top">ACCOUNT</a></div>
+			<div><%= link_to 'ORDERS', orders_path, :class => "locallink" %></div>
+			<div><%= link_to 'RESTAURANTS', restaurants_path, :class => "locallink" %></div>
+			<div><%= link_to 'USERS', users_path, :class => "locallink" %></div>
+			<% end %>
+			
+		</div>
+	</div>
+	<br />
+
+	<div class="bitpunkborder" id="content"><%= yield -%></div>
+
+	<h3>
+		Food<sup>Science</sup>&copy; 2013. Contact us! 603-828-2992
+		 - Our manager is happy to take your calls anytime, anywhere!
+	</h3>
+
+</body>
+</html>

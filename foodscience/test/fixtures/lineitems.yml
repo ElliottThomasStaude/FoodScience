@@ -1,0 +1,14 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  line_part: 1
+  line_order: 1
+  line_name: Myostatin Reprogrammed Chicken
+  line_price: 8.99
+
+two:
+  line_part: 2
+  line_order: 2
+  line_name: Philly Californium Steak
+  line_price: 14.99
+  line_notes: Pulled extra hard, replace cheese with asbestos.

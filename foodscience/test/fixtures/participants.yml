@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  part_user: 1
+  part_order: 2
+  part_role: organizer
+  part_cost: 0.01
+
+two:
+  part_user: 2
+  part_order: 1
+  part_role: participant
+  part_cost: 0.01

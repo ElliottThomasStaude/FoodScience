@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_name: Nondescript
+  user_email: Nondescript@gmail.com
+  password_digest: password
+  user_role: admin
+
+two:
+  user_name: Basic
+  user_email: Basic@gmail.com
+  password_digest: password
+  user_role: user
+
+three:
+  user_name: Anonymous
+  user_email: Anonymous@gmail.com
+  password_digest: password
+  user_role: user
+
+four:
+  user_name: Nobody
+  user_email: Nobody@gmail.com
+  password_digest: password
+  user_role: user
+  
+five:
+  user_name: abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
+  user_email: abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
+  password_digest: abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
+  user_role: abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  friend_creator: 1
+  friend_recipient: 2
+
+two:
+  friend_creator: 1
+  friend_recipient: 4
+
+three:
+  friend_creator: 2
+  friend_recipient: 3

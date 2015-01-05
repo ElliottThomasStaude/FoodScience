@@ -1,0 +1,75 @@
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+<h1>
+	*Fields marked with red are required
+</h1>
+
+<div class="fieldsdiv">	
+	<fieldset>
+	<legend>Order information</legend>
+	<form>
+	  <div class="reqdivrstnt">
+	  <%= f.label :Restaurant_to_place_with %><br />
+	  <% @restaurants.each do |restindex| %>
+      <div class="field">
+		<%= f.radio_button :order_rest, restindex.id.to_s %><%= restindex.rest_name %><br />
+		<%= restindex.rest_firstaddr %>, <%= restindex.rest_state %>
+	  </div>
+	  <% end %>
+	  <hr />
+	  <%= f.label :User_organizing_order %><br />
+	  <% @users.each do |userindex| %>
+      <div class="field">
+	  <%= f.radio_button :order_organizer, userindex.id.to_s %><%= userindex.user_name %>
+	  </div>
+	  <% end %>
+	  <hr />
+	  <div class="field">
+		<%= f.label :Order_cost %><br />
+		$<%= f.text_field :order_cost %>
+	  </div>
+	  <hr />
+	  <div class="field">
+		<%= f.label :Order_placement_time %><br />
+		<%= f.datetime_select :order_time_at %>
+	  </div>
+	  <hr />
+	  <div class="field">
+	  <%= f.label :Order_status %><br />
+      <%= f.radio_button :order_status, "pending", :checked => true %><%= f.label :order_status, "Pending", :value => "pending" %>
+      <br />
+      <%= f.radio_button :order_status, "placed" %><%= f.label :order_status, "Placed", :value => "placed" %>
+	  </div>
+	  <hr />
+  	  <% if @order.order_organizer? %>
+	  	<%= f.label :Order_participants %><br />
+	  	<% User.where("id != " + @order.order_organizer.to_s).each do |userinvite| %>
+			<div class="field">
+				<%= check_box_tag 'part_ids[]', userinvite.id.to_s %><%= userinvite.user_name %><br />
+			</div>
+		<% end %>
+	  	<hr />
+	  <% end %>
+	  <div class="field">
+      <%= f.check_box :order_type %><%= f.label :order_type, "Check for delivery" %>
+	  <hr />
+	  <div class="actions">
+		<%= f.submit %>
+	  </div>
+	</fieldset>
+	</form>
+</div>  
+<% end %>

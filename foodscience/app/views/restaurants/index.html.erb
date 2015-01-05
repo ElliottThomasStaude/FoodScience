@@ -1,0 +1,67 @@
+<h3 id="notice"><%= notice %></h3>
+
+<h2 class="biggermargin">
+	RESTAURANT LISTINGS
+</h2>
+
+<div class="addrstntdiv">
+	<%= link_to 'Add a Restaurant', new_restaurant_path %>
+</div>
+
+<ul class="unbulletlist">
+	<li>
+		Sort restaurants by:
+	</li>
+	<li>
+		<%= sortable "rest_name" %>
+	</li>
+	<li>
+		<%= sortable "rest_cuisine" %>
+	</li>
+	<li>
+		<%= sortable "rest_delivers" %>
+	</li>
+	<li>
+		<%= sortable "rest_state" %>
+	</li>
+</ul>
+<ul class="unbulletlist">
+	<% @restaurants.each do |restaurant| %>
+	<li>
+	<div class="restblock">
+		<p class="restname">
+			<%= restaurant.rest_name %>
+		</p>
+		<%= link_to 'Details', restaurant, :class => "locallink" %><br />
+		<%= link_to 'Edit', edit_restaurant_path(restaurant), :class => "locallink" %><br />
+		<%= link_to 'Delete', restaurant, method: :delete, data: { confirm: 'Are you sure?' }, :class => "locallink" %><br />
+		<ul>
+			<li>
+				<% if restaurant.rest_delivers? %>
+					<%= 'Yes! We deliver!' %>
+				<% else %>
+					<%= 'No! We do not deliver!' %>
+				<% end %>
+			</li>
+			<li>
+				We food with: <%= restaurant.rest_cuisine %> science!
+			</li>
+			<li>
+				<%= restaurant.rest_firstaddr %><% if restaurant.rest_secondaddr? %><%= ', ' + restaurant.rest_secondaddr.to_s %><% end %>, <%= restaurant.rest_city %>, <%= restaurant.rest_state %>, <%= restaurant.rest_zip %>
+			</li>
+			<li>
+				Phone: <%= restaurant.rest_phone %>
+			</li>
+			<% if restaurant.rest_fax? %>
+				<li>
+					<%= 'Fax: ' + restaurant.rest_fax %>
+				</li>
+			<% end %>
+			</li>
+			Visit us at: <%= link_to restaurant.rest_url, restaurant, :class => "locallink" %>
+		</ul>
+	</div>
+	</li>
+	<% end %>
+</ul>
+

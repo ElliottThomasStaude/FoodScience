@@ -1,0 +1,229 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+input[type="button"],input[type="submit"],fieldset,.menubar div
+{
+	border-radius:5px;
+}
+fieldset,.fieldsdiv
+{
+	margin-left:auto;
+	margin-right:auto;
+}
+fieldset,.restblock,.orderdetailtable th,.orderdetailtable td,.orderdetailtable td p,.menubar div
+{
+	background-color:#ffeedd;
+}
+table,.usertable th,.usertable td,.ordertable th,.ordertable td,.orderdetailtable td,.orderdetailtable td p
+{
+	border-collapse:collapse;
+}
+.ordertable th,.usertable th
+{
+	font-family:courier, "courier new," verdana;
+	font-size:12pt;
+	background-color:#ff9900;
+	border:solid 1px;
+}
+.ordertable td,.usertable td
+{
+	background-color:#fff5dd;
+	color:#161616;
+	border:double 3px; 
+}
+.ordertable td,.usertable td,.orderdetailtable th,.orderdetailtable td,.orderdetailtable td p
+{
+	font-size:10pt;
+}
+em,legend,.restname
+{
+	color:#ff9900;
+}  
+table,h1,h2,h3
+{
+	text-align:center;
+	font-family:verdana, helvetica, geneva;
+}
+strong,.locallink,.menubar div
+{
+	color:#ff0000;
+}
+body
+{
+	padding:30px 20px 20px;
+	background-image:url('FoodScience.png');
+	background-size:5%;
+	background-repeat:repeat-x;
+}
+a:hover
+{
+	text-decoration:underline;
+}
+a:active
+{
+	text-decoration:none;
+}
+h1
+{
+	font-size:6pt;
+}
+h2
+{
+	color:#444444;
+	font-size:20pt;
+}
+h3
+{
+	font-size:12pt;
+}
+p
+{
+	font-family:verdana;
+	font-size:14pt;
+}
+.menubar
+{
+	margin-left:auto;
+	margin-right:auto;
+	height:32px;
+	width:32px;
+	overflow:hidden;
+	float:left;
+}
+.menubar div
+{
+	height:20px;
+	padding:3px;
+	float:left;
+	position:relative;
+	left:32px;
+	border:3px double #ff9900;
+}
+.biggermargin
+{
+	margin-top:40px;
+}
+table
+{
+	margin-top:20px;
+}
+.locallink
+{
+	text-decoration:none;
+	font-family:courier, "times new roman," papyrus;
+}
+.restblock
+{
+	margin-bottom:20px;
+	width:400px;
+	padding:20px 5px;
+	border-left:double thick #ff9900;
+}
+.restname
+{
+	font-family:georgia,"times new roman," verdana;
+}
+.unbulletlist
+{
+	list-style-type:none;
+}
+.orderdetailtable
+{
+	margin:5% 30%;
+}
+.orderdetailtable th
+{
+    font-family:verdana, "courier new";
+	border:solid 1px;
+}
+.orderdetailtable td,.orderdetailtable td p
+{
+	text-align:left;
+	font-family:courier, "courier new," verdana;
+    border:solid 1px;
+}
+.fieldsdiv
+{
+	width:500px;
+}
+.required,.smallrequired,.mediumrequired
+{
+	border:solid 1px #ff0000;
+}
+.smallrequired
+{
+	width:12pt;
+}
+.mediumrequired
+{
+	width:24pt;
+}
+.confirmcancelset
+{
+	padding:5px;
+}
+input[value="Submit"]
+{
+	background-color:#ffa000;
+}
+input[value="Cancel"]
+{
+	background-color:#f0d070;
+}
+fieldset
+{
+	padding:5px 0px 5px 20px;
+}
+fieldset input
+{
+	margin:6px;
+}
+.reqdivrstnt
+{
+	width:450px;
+	border:solid 1px #ff0000;
+	margin:10px 0px;
+}
+.addrstntdiv
+{
+	padding-left:40px;
+}
+.bitpunkborder
+{
+	border:3px dashed #dd6600;
+	padding:5px;
+	margin-top:70px;
+}
+.hiddeninfo
+{
+	visibility:hidden;
+}
+#container
+{
+	float:left;
+	position:fixed;
+	height:32px;
+	width:32px;
+	background-color:#444444;
+	border:2px solid #aa2200;
+	clear:left;
+	opacity:0.9;
+	border-radius:3px;
+}
+#notice
+{
+	font-size:20pt;
+	font-family:courier;
+	color:#ffff00;
+}

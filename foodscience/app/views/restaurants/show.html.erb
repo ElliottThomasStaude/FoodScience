@@ -1,0 +1,84 @@
+<h3 id="notice"><%= notice %></h3>
+
+<h2 class="biggermargin">
+	SHOWING RESTAURANT DETAILS
+</h2>
+
+<p>
+  <strong>Restaurant name:</strong>
+  <%= @restaurant.rest_name %>
+</p>
+
+<p>
+  <strong>Type of cuisine:</strong>
+  <%= @restaurant.rest_cuisine %>
+</p>
+
+<% if @restaurant.rest_desc? %>
+<p>
+  <strong>Description and notes:</strong>
+  <%= @restaurant.rest_desc %>
+</p>
+<% end %>
+
+<p>
+  <strong>Restaurant address:</strong>
+  <%= @restaurant.rest_firstaddr %>
+</p>
+
+<% if @restaurant.rest_secondaddr? %>
+<p>
+  <strong>Address (contd.):</strong>
+  <%= @restaurant.rest_secondaddr %>
+</p>
+<% end %>
+
+<p>
+  <strong>City:</strong>
+  <%= @restaurant.rest_city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @restaurant.rest_state %>
+</p>
+
+<p>
+  <strong>Zip code:</strong>
+  <%= @restaurant.rest_zip %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @restaurant.rest_phone %>
+</p>
+
+<p>
+  <strong>Fax number:</strong>
+  <%= @restaurant.rest_fax %>
+</p>
+
+<p>
+  <strong>Site URL:</strong>
+  <%= @restaurant.rest_url %>
+</p>
+
+<p>
+  <strong>Delivery available:</strong>
+<% if @restaurant.rest_delivers? %>
+  YES! AND IT IS DEELISHUS! (at a price of $<%= @restaurant.rest_fee %>)
+<% else %>
+  NO! BUT WE LOVE YOU ANYWAY!
+<% end %>
+</p>
+
+
+<% if @restaurant.rest_menufile? %>
+<p>
+  <strong>Restaurant Menu:</strong>
+  <%= @restaurant.rest_menufile %>
+</p>
+<% end %>
+
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> | 
+<%= link_to 'Back', restaurants_path %>

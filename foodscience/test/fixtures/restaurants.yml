@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  rest_name: Generic Eatery
+  rest_cuisine: New English
+  rest_desc: Nothing to see here. Move along.
+  rest_firstaddr: 511 Nonextant Avenue
+  rest_secondaddr: 2nd floor
+  rest_city: Nowhere
+  rest_state: NA
+  rest_zip: 00004
+  rest_phone: 0000000000
+  rest_fax: 1111111111
+  rest_url: www.site.com
+  rest_delivers: true
+  rest_fee: 0.01

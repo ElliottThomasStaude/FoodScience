@@ -1,0 +1,103 @@
+<h3 id="notice"><%= notice %></h3>
+
+<h2 class="biggermargin">
+	ORDER LISTINGS
+</h2>
+
+<%= link_to 'New Order', new_order_path %>
+	
+<form>
+	Sort orders by:
+	<%= sortable "order_rest" %>
+	<%= sortable "order_status" %>
+	<%= sortable "order_time_at" %>
+	<%= sortable "created_at" %>
+	<%= sortable "updated_at" %>
+</form>	
+
+<table class="ordertable">
+<tr>
+	<th>
+		Restaurant placed at
+	</th>
+	<th>
+		Order organizer
+	</th>
+	<th>
+		Order cost
+	</th>
+	<th>
+		Status
+	</th>
+	<th>
+		Order type
+	</th>
+	<th>
+		Placement time
+	</th>
+	<th>
+		Date added
+	</th>
+	<th>
+		Date last updated
+	</th>
+	<th>
+		[VIEW]<br /> Order details
+	</th>
+	<th>
+		[VIEW]<br /> Users participating
+	</th>
+	<th>
+		[EDIT]<br /> Order info
+	</th>
+	<th>
+		[EDIT]<br /> Delete order
+	</th>
+</tr>
+<% @orders.each do |order| %>
+<tr>
+	<td>
+			<%= link_to Restaurant.where("id = " + order.order_rest.to_s).first.rest_name, Restaurant.where("id = " + order.order_rest.to_s).first, :class => "locallink" %>
+	</td>
+	<td>
+			<%= link_to User.where("id = " + order.order_organizer.to_s).last.user_name, User.where("id = " + order.order_organizer.to_s).first, :class => "locallink" %>
+	</td>
+	<td>
+			$<%= order.order_cost %>
+	</td>
+	<td>
+			<%= order.order_status %>
+	</td>
+	<td>
+			<% if order.order_type? %>
+  				Delivery
+			<% else %>
+  				Pickup
+			<% end %>
+	</td>
+	<td>
+			<%= order.order_time_at %>
+	</td>
+	<td>
+			<%= order.created_at %>
+	</td>
+	<td>
+			<%= order.updated_at %>
+	</td>
+	<td>
+			<%= link_to 'Details', order, :class => "locallink" %>
+	</td>
+	<td>
+			<% @participants.where(part_order: order.id).each do |part| %>
+				<%= link_to @users.where(id: + part.part_user).first.user_name, @users.where(id: + part.part_user).first, :class => "locallink" %><br />
+			<% end %>
+	</td>
+	<td>
+			<%= link_to 'Edit', edit_order_path(order), :class => "locallink" %>
+	</td>
+	<td>
+			<%= link_to 'Delete', order, method: :delete, data: { confirm: 'Are you sure?' }, :class => "locallink" %>
+	</td>
+</tr>
+<% end %>
+</table>

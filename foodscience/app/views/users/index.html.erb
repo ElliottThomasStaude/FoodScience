@@ -1,0 +1,98 @@
+<h3 id="notice"><%= notice %></h3>
+
+<h2 class="biggermargin">
+	USER LISTINGS
+</h2>
+
+<p><%= link_to 'New User', new_user_path %></p>
+<!-- Updated: search for user -->
+<%= form_tag("/users", method: "get") do %>
+  <%= label_tag(:find_user, "<Leave blank to reset> Search for:") %>
+  <%= text_field_tag(:find_user) %>
+  <%= submit_tag("Search") %>
+<% end %>
+<!-- /Updated -->
+<br />
+<form>
+	Sort users by:
+	<%= sortable "user_name" %>
+	<%= sortable "user_email" %>
+	<%= sortable "user_role" %>
+	<%= sortable "created_at" %>
+	<%= sortable "updated_at" %>
+</form>	
+
+<table class="usertable">
+<tr>
+	<th>
+		User Name
+	</th>
+	<th>
+		E-mail
+	</th>
+	<th>
+		Role
+	</th>
+	<th>
+		Date added
+	</th>
+	<th>
+		Date last updated
+	</th>
+	<th>
+		User friends
+	</th>
+	<th>
+		[VIEW]<br /> User orders
+	</th>
+	<th>
+		[VIEW]<br /> User details
+	</th>
+	<th>
+		[EDIT]<br /> User info
+	</th>
+	<th>
+		[EDIT]<br /> Delete user
+	</th>
+</tr>
+<% @users.each do |user| %>
+<tr>
+	<td>
+			<%= link_to user.user_name, user, :class => "locallink" %>
+	</td>
+	<td>
+			<%= user.user_email %>
+	</td>
+	<td>
+			<%= user.user_role %>
+	</td>
+	<td>
+			<%= user.created_at %>
+	</td>
+	<td>
+			<%= user.updated_at %>
+	</td>
+	<td>
+			<% @friends.each do |friend| %>
+				<% @users.each do |namer| %>
+					<% if namer.id == friend.friend_recipient && friend.friend_creator == user.id %>
+						<%= link_to namer.user_name, namer, :class => "locallink" %><br />
+					<% end %>
+				<% end %>
+			<% end %>
+	</td>
+	<td>
+			<a class="locallink" href="#top">USER ORDERS</a>
+	</td>
+	<td>
+			<%= link_to 'Details', user, :class => "locallink" %>
+	</td>
+	<td>
+			<%= link_to 'Edit', edit_user_path(user), :class => "locallink" %>
+	</td>
+	<td>
+			<%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' }, :class => "locallink" %>
+	</td>
+</tr>
+<% end %>
+</table>

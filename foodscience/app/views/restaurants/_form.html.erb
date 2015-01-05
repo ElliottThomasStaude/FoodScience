@@ -1,0 +1,98 @@
+<%= form_for(@restaurant, :html => {multipart: true}) do |f| %>
+  <% if @restaurant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h2>
+
+      <ul>
+      <% @restaurant.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<h1>
+	*Fields marked with red are required
+</h1>
+
+<div class="fieldsdiv">
+	<fieldset>
+	<legend>Restaurant information</legend>
+	<form>
+		<div class="reqdivrstnt">
+		<div class="field">
+			<%= f.label "Restaurant name:" %><br />
+			<%= f.text_field :rest_name %>
+		</div>
+		<hr />
+		<div class="field">
+			<%= f.label "Phone number:" %><br />
+			<%= f.text_field :rest_phone %>
+		</div>
+		<hr />
+		<div class="field">
+			<%= f.label "Restaurant's URL:" %><br />
+			<%= f.text_field :rest_url %>
+		</div>
+		</div>
+		<div class="field">
+			<%= f.label "Fax number:" %><br />
+			<%= f.text_field :rest_fax %>
+		</div>
+		<div class="reqdivrstnt">
+		<div class="field">
+			<%= f.label "Street address:" %><br />
+			<%= f.text_field :rest_firstaddr %>
+		</div>
+		</div>
+		<div class="field">
+			<%= f.label "Street address, continued:" %><br />
+			<%= f.text_field :rest_secondaddr %>
+		</div>
+		<div class="reqdivrstnt">
+		<div class="field">
+			<%= f.label "City:" %><br />
+			<%= f.text_field :rest_city %>
+		</div>
+		<hr />
+		<div class="field">
+			<%= f.label "State:" %><br />
+			<%= f.text_field :rest_state %>
+		</div>
+		<hr />
+		<div class="field">
+			<%= f.label "Zip code:" %><br />
+			<%= f.text_field :rest_zip %>
+		</div>
+		<hr />
+		<div class="field">
+			<%= f.label "Cuisine:" %><br />
+			<%= f.text_field :rest_cuisine %>
+		</div>
+		<hr />
+		<div class="field">
+			<%= f.check_box :rest_delivers %><%= f.label "Check if delivery is available" %><br />
+		</div>
+		<hr />
+		<div class="field">
+			<%= f.label "Deliver fee (if applicable):" %><br />
+			<%= f.text_field :rest_fee %>
+		</div>
+		</div>
+		<div class="field">
+			<%= f.label "File for restaurant's menu:" %><br />
+  			<%= f.file_field :rest_menufile %>
+		</div>
+		<hr />
+		<div class="field">
+			<%= f.label "Description, notes:" %><br />
+			<%= f.text_area :rest_desc %>
+		</div>
+		</form>
+		
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+</fieldset>
+</div>
+<% end %>
